@@ -1,0 +1,19 @@
+TOKEN=$(head -n 1 ./github.token)
+
+if [ $# -lt 1 ]; then
+	echo "Repos names?: "
+	read REPOS
+else
+	REPOS=$@
+fi
+
+for REPO in $REPOS
+do
+	if [ -d "$REPO" ]; then
+		cd $REPO
+		git push https://$TOKEN@github.com/drAlexAk/$REPO.git
+		cd -
+	else
+		echo "Not such repo '$REPO'"
+	fi
+done
