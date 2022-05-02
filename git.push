@@ -1,3 +1,6 @@
+# push git repos
+
+
 TOKEN=$(head -n 1 ./github.token)
 
 if [ $# -lt 1 ]; then
